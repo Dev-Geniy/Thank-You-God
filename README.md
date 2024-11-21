@@ -100,7 +100,5 @@
 
 ![Screenshot-17](https://i.ibb.co/xzqbmr0/Screenshot-17.png)
 
-[Перейти на imgbb](https://imgbb.com/)
-
 ## Контакты
 Если у вас есть вопросы или предложения, не стесняйтесь связаться со мной по электронной почте: dev_geniy_partner@protonmail.com
