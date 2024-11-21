@@ -67,24 +67,24 @@ README.md  - Этот файл
 
 ## Как внести изменения
 Как внести изменения
-Создайте новую ветку:
+1. Создайте новую ветку:
 
-bash
-Копировать код
-git checkout -b feature-branch
-Внесите необходимые изменения в файлы проекта.
+   ```bash
+   git checkout -b feature-branch
 
-Сделайте коммит:
+2. Внесите необходимые изменения в файлы проекта.
 
-bash
-Копировать код
-git commit -am "Описание изменений"
-Отправьте ветку на GitHub:
+3. Сделайте коммит:
 
-bash
-Копировать код
-git push origin feature-branch
-Создайте Pull Request на GitHub для обсуждения и слияния изменений.
+   ```bash
+   git commit -am "Описание изменений"
+
+4. Отправьте ветку на GitHub:
+
+   ```bash
+   git push origin feature-branch
+
+5. Создайте Pull Request на GitHub для обсуждения и слияния изменений.
 
 
 
