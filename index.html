@@ -1,0 +1,69 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You God</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+    <h1 id="mainTitle">Thank You God</h1>
+    </header>
+  <div id="progress-bar">
+    <div class="day" data-day="0">Пн</div>
+    <div class="day" data-day="1">Вт</div>
+    <div class="day" data-day="2">Ср</div>
+    <div class="day" data-day="3">Чт</div>
+    <div class="day" data-day="4">Пт</div>
+    <div class="day" data-day="5">Сб</div>
+    <div class="day" data-day="6">Вс</div>
+</div>
+
+    <main id="mainContent">
+       <div class="container" id="homeScreen">
+            <div id="bibleVerse" class="bible-verse"><!-- Местописание будет здесь -->
+            </div>
+          
+            <div id="socialIcons" class="social-icons"> 
+               <a href="#" id="twitterIcon" target="_blank">
+                 <img src="https://cdn-icons-png.freepik.com/256/15196/15196056.png?semt=ais_hybrid" alt="Twitter">
+               </a>
+               <a href="#" id="instaIcon" target="_blank">
+                 <img src="https://cdn-icons-png.freepik.com/256/725/725339.png?semt=ais_hybrid" alt="Instagram">
+               </a>
+               <a href="#" id="fbIcon" target="_blank">
+                 <img src="https://cdn-icons-png.freepik.com/256/3677/3677213.png?semt=ais_hybrid" alt="Facebook">
+               </a>
+            </div>
+        </div>
+
+        <div id="gratitudeList" class="gratitude-list" style="display:none;">
+          
+            <!-- Сохраненные благодарности будут здесь -->
+        </div>
+        <div id="gratitudeInput" class="gratitude-input">
+            <input type="text" id="gratitude1" maxlength="30" placeholder="Благодарность 1">
+            <input type="text" id="gratitude2" maxlength="30" placeholder="Благодарность 2">
+            <input type="text" id="gratitude3" maxlength="30" placeholder="Благодарность 3">
+            <button id="saveGratitude">Добавить благодарности</button>
+        </div>
+    </main>
+ 
+<!-- Панель иконок для переключения экранов -->
+<div class="icon-bar">
+    <div class="icon" id="homeIcon">
+        <img src="https://cdn-icons-png.freepik.com/256/738/738822.png?semt=ais_hybrid" alt="Главный экран">
+    </div>
+    <div class="icon" id="savedIcon">
+        <img src="https://cdn-icons-png.freepik.com/256/15129/15129170.png?semt=ais_hybrid" alt="Сохраненные благодарности">
+    </div>
+   <!-- Иконка для открытия Библии -->
+    <div class="icon" id="anotherIcon">
+        <img src="https://cdn-icons-png.freepik.com/256/786/786723.png?ga=GA1.1.469636009.1732164694&semt=ais_hybrid" alt="Поделиться">
+    </div>
+</div>
+
+    <script src="app.js"></script>
+</body>
+</html>
