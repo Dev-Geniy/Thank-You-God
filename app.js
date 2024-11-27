@@ -287,3 +287,24 @@ shareIcon.addEventListener("click", () => {
             });
     }
 });
+
+// Таймер для исчезновения блока счетчика
+// Функция для скрытия счетчика
+function hideCounter() {
+    const counterContainer = document.getElementById('counter-container');
+    if (counterContainer) {
+        counterContainer.style.opacity = '0'; // Плавное исчезновение
+        setTimeout(() => counterContainer.style.display = 'none', 1000); // Удаление из потока через 1 секунду
+    }
+}
+
+// Таймер для исчезновения через 10 секунд
+setTimeout(hideCounter, 12000);
+
+// Скрытие счетчика при клике на экран
+document.body.addEventListener('click', () => {
+    const counterContainer = document.getElementById('counter-container');
+    if (counterContainer && counterContainer.style.opacity !== '0') {
+        hideCounter();
+    }
+});
