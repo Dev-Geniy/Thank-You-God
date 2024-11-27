@@ -45,30 +45,10 @@ const randomBibleVerses = [
     "Благодарю Тебя, Господи, за Твои обетования и надежду на будущее. (Иеремия 29:11)"
 ];
 
-
     // Функция для получения случайного стиха
     const getRandomBibleVerse = () => {
         const randomIndex = Math.floor(Math.random() * randomBibleVerses.length);
         bibleVerse.innerText = randomBibleVerses[randomIndex];
-    };
-
-    // Функция для создания текста и ссылки для дележа
-    const getShareText = () => {
-        const currentUrl = window.location.href;  // URL текущей страницы (страница с местописанием)
-        const shareText = `${bibleVerse.innerText}\n\nThankYouGod: ${currentUrl}`; // Текст для дележа
-        return encodeURIComponent(shareText);  // Кодируем для использования в URL
-    };
-
-    // Функция для отображения социальных иконок
-    const displaySocialIcons = () => {
-        // Ссылки для социальных сетей
-        const twitterUrl = `https://twitter.com/intent/tweet?text=${getShareText()}`;
-        const fbUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=${getShareText()}`;
-        const instaUrl = "https://www.instagram.com";  // Instagram не поддерживает прямое делание репостов через браузер
-
-        document.getElementById("twitterIcon").setAttribute("href", twitterUrl);
-        document.getElementById("fbIcon").setAttribute("href", fbUrl);
-        document.getElementById("instaIcon").setAttribute("href", instaUrl);
     };
 
     // Функция для обновления прогресс-бара
@@ -113,6 +93,12 @@ const randomBibleVerses = [
         }
     };
 
+    // Функция для получения индекса дня недели (неделя начинается с понедельника)
+    const getCurrentDayIndex = () => {
+        const today = new Date().getDay();
+        return today === 0 ? 6 : today - 1; // Воскресенье (0) -> 6, остальные дни сдвигаются на -1
+    };
+
     // Функция для сохранения благодарности
     const saveGratitude = () => {
         const gratitudeTexts = [
@@ -131,29 +117,42 @@ const randomBibleVerses = [
             savedGratitudes.push(gratitudeGroup);
             localStorage.setItem("gratitudes", JSON.stringify(savedGratitudes));
 
+            // Отображаем благодарность на экране
             displayGratitudeGroup(gratitudeGroup);
 
+            // Очищаем поля ввода
             gratitude1.value = "";
             gratitude2.value = "";
             gratitude3.value = "";
 
+            // Скрываем форму и показываем список
             gratitudeInput.style.display = "none";
             gratitudeList.style.display = "block";
 
-            const currentDay = new Date().getDay();
+            // Обновляем прогресс недели
+            const currentDay = getCurrentDayIndex(); // Считаем по индексу дня недели
             const savedWeekProgress = JSON.parse(localStorage.getItem("weekProgress")) || {};
-            savedWeekProgress[currentDay] = true;
+            savedWeekProgress[currentDay] = true; // Отмечаем текущий день как выполненный
             localStorage.setItem("weekProgress", JSON.stringify(savedWeekProgress));
+
+            // Обновляем прогресс-бар
             updateProgressBar();
 
-            localStorage.setItem("gratitudeAddedDate", gratitudeGroup.date); // Сохраняем дату
+            // Сохраняем дату добавления благодарности
+            localStorage.setItem("gratitudeAddedDate", gratitudeGroup.date); 
         }
     };
 
     // Загрузка данных из LocalStorage при загрузке страницы
     const loadSavedGratitudes = () => {
         const savedGratitudes = JSON.parse(localStorage.getItem("gratitudes")) || [];
-        savedGratitudes.forEach(displayGratitudeGroup);
+
+        // Фильтруем только те благодарности, которые добавлены сегодня
+        const currentDate = new Date().toLocaleDateString();
+        const todaysGratitudes = savedGratitudes.filter(gratitude => gratitude.date === currentDate);
+
+        // Отображаем благодарности за сегодня
+        todaysGratitudes.forEach(displayGratitudeGroup);
     };
 
     // Логика отображения формы благодарности в зависимости от времени суток и добавления благодарности
@@ -177,7 +176,7 @@ const randomBibleVerses = [
             gratitudeInput.style.display = "none";
             infoMessage.style.display = "none";  // Прячем информационное сообщение
         } else {
-            if (currentHour >= 20 && currentHour < 24) {
+            if (currentHour >= 15 && currentHour < 24) {
                 gratitudeInput.style.display = "flex";
                 infoMessage.style.display = "none";
             } else {
@@ -190,7 +189,7 @@ const randomBibleVerses = [
             Notification.requestPermission();
         }
 
-        if (currentHour === 20 && !gratitudeAddedToday) {
+        if (currentHour === 15 && !gratitudeAddedToday) {
             if (Notification.permission === 'granted') {
                 new Notification("Не забудьте добавить свою благодарность!", {
                     body: "Каждый день - это новый шанс быть благодарным.",
@@ -219,7 +218,7 @@ const randomBibleVerses = [
 
     // Инициализация
     getRandomBibleVerse();
-    loadSavedGratitudes();
+    loadSavedGratitudes(); // Загружаем только сегодняшние благодарности
     updateProgressBar();
     showGratitudeInput();
 
