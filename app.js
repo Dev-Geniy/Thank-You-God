@@ -164,7 +164,7 @@ const randomBibleVerses = [
         const gratitudeAddedToday = localStorage.getItem("gratitudeAddedDate") === currentDate;
 
         const infoMessage = document.createElement("div");
-        infoMessage.innerText = "Ежедневную благодарность Богу можно добавить с 20:00, оставляйте 3 благодарности, так же вы сможете просматривать свои благодарности в дальнейшем, Слава Иисусу!";
+        infoMessage.innerText = "Ежедневную благодарность Богу можно добавить с 19:00, оставляйте 3 благодарности, так же вы сможете просматривать свои благодарности в дальнейшем, Слава Иисусу!";
         infoMessage.classList.add("info-message");
 
         if (!document.querySelector(".info-message")) {
@@ -176,7 +176,7 @@ const randomBibleVerses = [
             gratitudeInput.style.display = "none";
             infoMessage.style.display = "none";  // Прячем информационное сообщение
         } else {
-            if (currentHour >= 15 && currentHour < 24) {
+            if (currentHour >= 19 && currentHour < 24) {
                 gratitudeInput.style.display = "flex";
                 infoMessage.style.display = "none";
             } else {
@@ -189,7 +189,7 @@ const randomBibleVerses = [
             Notification.requestPermission();
         }
 
-        if (currentHour === 15 && !gratitudeAddedToday) {
+        if (currentHour === 19 && !gratitudeAddedToday) {
             if (Notification.permission === 'granted') {
                 new Notification("Не забудьте добавить свою благодарность!", {
                     body: "Каждый день - это новый шанс быть благодарным.",
