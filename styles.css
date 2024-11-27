@@ -278,3 +278,52 @@ p {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+/* счётчик */
+/* Основные стили для блока с меткой и счетчиком */
+#counter-container {
+    position: fixed; /* Закрепляем внизу экрана */
+    bottom: 70px; /* Расстояние от нижней границы экрана */
+    left: 50%; /* Центрируем по горизонтали */
+    transform: translateX(-50%); /* Коррекция для центрирования */
+    background-color: rgba(50, 50, 50, 0.8); /* Приглушенный серый оттенок */
+    color: white; /* Белый текст */
+    padding: 20px;
+    border-radius: 10px; /* Скругленные углы */
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column; /* Размещение элементов по вертикали */
+    align-items: center; /* Выравнивание по центру */
+    opacity: 1; /* Изначальная видимость */
+    transition: opacity 1s ease; /* Плавное исчезновение */
+}
+
+/* Стили для текста */
+#counter-container h3 {
+    color: #d3d3d3; /* Приглушенный серый цвет */
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 15px; /* Отступ между текстом и счетчиком */
+    font-weight: normal;
+}
+
+/* Стили для текста "Количество пользователей" */
+#counter-container .text {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 10px; /* Отступ между текстом и счетчиком */
+}
+
+/* Иконка рядом с текстом */
+#counter-container .text img {
+    width: 30px; /* Размер иконки */
+    height: 30px;
+    margin-right: 8px; /* Отступ между иконкой и текстом */
+}
+
+/* Стили для изображения счетчика */
+#counter-container img {
+    width: 120px; /* Размер счетчика */
+    height: auto;
+}
